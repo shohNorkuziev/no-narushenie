@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+}
+.form_signup{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 25px;
+
+}
+.form_signup div input{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.signup:hover{
+    color: rgb(78, 78, 78);
+    transition: all 0.2s ease-in-out;
+}
+.signin:hover{
+    color: rgb(78, 78, 78);
+    transition: all 0.2s ease-in-out;
+}
+.logout:hover{
+    color: rgb(78, 78, 78);
+    transition: all 0.2s ease-in-out;
+}

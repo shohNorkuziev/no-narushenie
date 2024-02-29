@@ -1,8 +1,9 @@
 @extends('layouts.layout')
 @section('title', 'Регистрация')
 @section('content')
-
-    <form action="{{ route('signup') }}" method="post">
+@include('layouts.header')
+<h1>Регистрация</h1>
+    <form action="{{ route('signup') }}" method="post" class="form_signup">
         @csrf
         <div>
             <label for="firstname">Имя</label>
@@ -33,7 +34,8 @@
             <input type="password" name="password" id="password">
         </div>
         <div>
-            <button type="submit">Регистрация</button>
+            <input type="submit" placeholder="Регистрация">
 </div>
     </form>
+@include('layouts.footer')
 @endsection
