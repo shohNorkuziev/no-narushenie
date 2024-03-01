@@ -13,8 +13,8 @@ class StatementController extends Controller
     {
         $user = Auth::user();
         $data = $request->validate([
-            'car_number' => 'required | alpha',
-            'description' => 'required | alpha'
+            'car_number' => 'required',
+            'description' => 'required'
         ]);
         Statement::create(['user_id'=>$user->id]+$data);
         return redirect()->route('main');
@@ -56,7 +56,7 @@ class StatementController extends Controller
      */
     public function edit(Statement $statement)
     {
-        //
+        return view('edit-state')->with('data', $statement);
     }
 
     /**
@@ -64,7 +64,11 @@ class StatementController extends Controller
      */
     public function update(Request $request, Statement $statement)
     {
-        //
+        $data = $request->input('status');
+        $statement->update([
+            'status' => (string) $data
+        ]);
+        return redirect()->route('mainAdmin')->with('message','Успешно отредактирован');
     }
 
     /**

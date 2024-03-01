@@ -11,6 +11,7 @@ class Statement extends Model
     protected $fillable =[
         'car_number',
         'description',
+        'status',
         'user_id'
     ];
 }

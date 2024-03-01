@@ -26,12 +26,11 @@ Route::get('signin',[Controller::class, 'signinForm'])->name('signin-form');
 //UserController
 Route::post('signup',[UserController::class, 'signup'])->name('signup');
 Route::post('signin',[UserController::class, 'signin'])->name('signin');
-
-
 //StatementController
-Route::post('state',[StatementController::class, 'store'])->name('state-create');
 
 Route::middleware('auth:sanctum')->group(function(){
+    Route::resource('/statements',StatementController::class)->only('edit','update');
+    Route::post('state',[StatementController::class, 'store'])->name('state-create');
     Route::post('/changeStatus',[StatementController::class, 'changeStatus'])->name('changeStatus');
     Route::get('/main', [Controller::class, 'main'])->name('main');
     Route::get('mainAdmin', [Controller::class, 'mainAdmin'])->name('mainAdmin');

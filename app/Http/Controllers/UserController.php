@@ -5,12 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function signup(Request $request)
     {
-        User::create($request->all());
+        $validator = Validator::make($request->all(),[
+            'firstname' => 'required|string|regex:/^[\p{Cyrillic}\s]+$/u',
+            'lastname' => 'required|string|regex:/^[\p{Cyrillic}\s]+$/u',
+            'patronymic' => 'required|string|regex:/^[\p{Cyrillic}\s]+$/u',
+            'phone' => 'required|regex:/\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}/',
+            'login' => 'required|unique:users,login',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        User::create($validator->validated());
         return redirect()->route('signin-form');
     }
 

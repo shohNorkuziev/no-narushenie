@@ -1,8 +1,17 @@
 <header class="w-full">
     <h1>
-        <a href="{{route('main')}}">
-            Нарушения Нет.
-        </a>
+        @auth
+        @if (Auth::user()->role === 'user')
+            <a href="{{route('main')}}">
+                Нарушения Нет.
+            </a>
+        @endif
+        @if (Auth::user()->role === 'admin')
+            <a href="{{route('mainAdmin')}}">
+                Нарушения Нет.
+            </a>
+        @endif
+        @endauth
     </h1>
     @guest
     <div class="signup w-full btn btn-primary">
