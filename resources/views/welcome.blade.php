@@ -6,16 +6,26 @@
 @include('layouts.header')
 <main>
     @auth
+    <h1 class="title">Ваши заявки</h1>
+    <div class="container">
         @foreach ($data as $state)
-            <div class="statement">
+            <div class="statement form_signup">
                 <div class="car_number">
-                    {{$state}}
+                    <span>Номер Автомобиля:</span>
+                    {{$state->car_number}}
+                </div>
+                <div class="description">
+                    <span>Описание нарушения:</span>
+                    {{$state->description}}
+                </div>
+                <div class="status">
+                    <span>Статус:</span>
+                    {{$state->status}}
                 </div>
             </div>
         @endforeach
     @endauth
-
-    <h1>Главная страница</h1>
+    </div>            {{$data->links()}}
 </main>
 @include('layouts.footer')
 @endsection

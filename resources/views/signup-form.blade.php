@@ -2,40 +2,35 @@
 @section('title', 'Регистрация')
 @section('content')
 @include('layouts.header')
-<h1>Регистрация</h1>
+<main>
     <form action="{{ route('signup') }}" method="post" class="form_signup">
         @csrf
+        <h1 class="title">Регистрация</h1>
         <div>
-            <label for="firstname">Имя</label>
-            <input type="text" name="firstname" id="name">
+            <input type="text" name="firstname" id="name" placeholder="Имя">
         </div>
         <div>
-            <label for="lastname">Фамилия</label>
-            <input type="text" name="lastname" id="name">
+            <input type="text" name="lastname" id="name" placeholder="Фамилия">
         </div>
         <div>
-            <label for="patronymic">Отчество</label>
-            <input type="text" name="patronymic" id="name">
+            <input type="text" name="patronymic" id="name" placeholder="Отчество">
         </div>
         <div>
-            <label for="phone">Телефон</label>
-            <input type="text" name="phone" id="phone">
+            <input type="text" name="phone" id="phone" placeholder="Телефон">
         </div>
         <div>
-            <label for="login">Логин</label>
-            <input type="text" name="login" id="login">
+            <input type="text" name="login" id="login" placeholder="Логин">
         </div>
         <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" placeholder="Email">
         </div>
         <div>
-            <label for="password">Пароль</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" placeholder="Пароль">
         </div>
         <div>
             <input type="submit" placeholder="Регистрация">
-</div>
+        </div>
     </form>
+</main>
 @include('layouts.footer')
 @endsection

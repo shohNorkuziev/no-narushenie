@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Statement;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,13 +17,14 @@ class StatementController extends Controller
             'description' => 'required | alpha'
         ]);
         Statement::create(['user_id'=>$user->id]+$data);
-        return redirect()->route('home');
+        return redirect()->route('main');
     }
 
-
-    /**
-     * Display a listing of the resource.
-     */
+    public function changeStatus(Statement $statement)
+    {
+        $statement->status = 'потверждено';
+        $statement->save();
+    }
     public function index()
     {
         //

@@ -1,6 +1,6 @@
 <header class="w-full">
     <h1>
-        <a href="{{route('home')}}">
+        <a href="{{route('main')}}">
             Нарушения Нет.
         </a>
     </h1>
@@ -13,9 +13,11 @@
     </div>
     @endguest
     @auth
-    <div class="state w-full btn btn-primary">
-        <a href="{{ route('statement-form') }}">Создать заявку</a>
-     </div>
+    @if (Auth::user()->role == 'user')
+        <div class="state w-full btn btn-primary">
+            <a href="{{ route('statement-form') }}">Создать заявку</a>
+        </div>
+    @endif
     <div class="logout w-full btn btn-primary">
        <a href="{{ route('logout') }}">Выход</a>
     </div>

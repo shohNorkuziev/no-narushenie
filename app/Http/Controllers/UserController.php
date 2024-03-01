@@ -11,7 +11,7 @@ class UserController extends Controller
     public function signup(Request $request)
     {
         User::create($request->all());
-        return redirect()->route('home');
+        return redirect()->route('signin-form');
     }
 
     public function signin(Request $request){
@@ -19,8 +19,12 @@ class UserController extends Controller
             'login' => 'required | alpha',
             'password' => 'required |min:6'
         ]);
+        //сделай перенаправление в зависимости от роли пользователя
         if (Auth::attempt($data)) {
-            return redirect()->route('home');
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('mainAdmin');
+            }
+            return redirect()->route('statement-form');
         }
         return redirect()->back(302)->with('error', 'Ошибка, неправильный логин или пароль');
     }
@@ -28,7 +32,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('signin-form');
     }
 
 

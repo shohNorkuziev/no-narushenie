@@ -2,26 +2,22 @@
 @section('title', 'Вход')
 @section('content')
 @include('layouts.header')
-<h1>Вход</h1>
+<main>
 <form action="{{ route('signin') }}" method="post" class="form_signup">
         @csrf
-        <div>
-            <form action="{{ route('signin') }}" method="post">
+        <h1 class="title">Вход</h1>
                 @csrf
                 <div>
-                    <label for="login">Логин</label>
-                    <input type="text" name="login" id="login">
+                    <input type="text" name="login" id="login" placeholder="Логин">
                 </div>
                 <div>
-                    <label for="password">Пароль</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" placeholder="Пароль">
                 </div>
                 <div>
                     <input type="submit" placeholder="Вход">
                 </div>
-            </form>
-        </div>
     </form>
+</main>
 @include('layouts.footer')
 @endsection
 

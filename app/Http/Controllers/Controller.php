@@ -13,8 +13,17 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
     public function index()
     {
-        $state = Statement::where('user_id',Auth::user()->id)->orderBy('id','DESC')->get();
-        return view('welcome')->with('data', $state);
+        return view('signup-form');
+    }
+    public function main()
+    {
+        $state = Statement::where('user_id',Auth::user()->id)->orderBy('id','DESC')->paginate(2);
+        return view('welcome')->with('data',$state);
+    }
+    public function mainAdmin()
+    {
+        $state = Statement::orderBy('id','DESC')->paginate(2);
+        return view('welcomeAdmin')->with('data',$state);
     }
     public function signupForm()
     {
