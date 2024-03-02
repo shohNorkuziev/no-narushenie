@@ -25,14 +25,14 @@
             @enderror
         </div>
         <div>
-            <input type="text" name="phone" id="phone" placeholder="Телефон +7(XXX)-XXX-XX-XX)" required>
+            <input type="text" name="phone" id="phone" placeholder="Телефон +7(XXX)-XXX-XX-XX" required>
             @error('phone')
             <p class="error">{{$message}}</p>
             @enderror
         </div>
         <div>
             <input type="login" name="login" id="login" placeholder="Логин" required>
-            @error('firstname')
+            @error('login')
             <p class="error">{{$message}}</p>
             @enderror
         </div>
